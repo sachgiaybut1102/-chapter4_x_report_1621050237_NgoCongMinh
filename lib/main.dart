@@ -34,7 +34,7 @@ class HeroApp extends StatelessWidget {
         //   '/second': (context) => SecondScreen(),
         // },
         //Ex4
-         onGenerateRoute: (settings) {
+        onGenerateRoute: (settings) {
           // If you push the PassArguments route
           if (settings.name == PassArgumentsScreen.routeName) {
             // Cast the arguments to the correct type: ScreenArguments.
@@ -64,6 +64,5 @@ class HeroApp extends StatelessWidget {
           ExtractArgumentsScreen.routeName: (context) =>
               ExtractArgumentsScreen(),
         });
-        );
   }
 }
