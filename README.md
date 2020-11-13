@@ -194,10 +194,15 @@ class HeroApp extends StatelessWidget {
     return MaterialApp(
       title: 'Navigation',
 
-      /// 3. Navigate with named routes (require restart app to run)
+      //Ex3
+      title: 'Named Routes Demo',
+       // Start the app with the "/" named route. In this case, the app starts
+       // on the FirstScreen widget.
       initialRoute: '/',
       routes: {
+         // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => FirstScreen(),
+        //When navigating to the "/second" route, build the SecondScreen widget.
         '/second': (context) => SecondScreen(),
       },
     );
@@ -282,27 +287,37 @@ class HeroApp extends StatelessWidget {
     return MaterialApp(
       title: 'Navigation',
 
-      /// 4 Pass arguments to a named route (require restart app to run)
-      home: HomeScreen(),
+     //Ex4
       onGenerateRoute: (settings) {
+       // If you push the PassArguments route
         if (settings.name == PassArgumentsScreen.routeName) {
-          final ScreenArguments args = settings.arguments;
+          // Cast the arguments to the correct type: ScreenArguments.
+        final ScreenArguments args = settings.arguments;
 
+           // Then, extract the required data from the arguments and
+          // pass the data to the correct screen.
           return MaterialPageRoute(
             builder: (context) {
-              return PassArgumentsScreen(
-                title: args.title,
-                message: args.message,
-              );
-            },
+             return PassArgumentsScreen(
+               title: args.title,
+            message: args.message,
+             );
+           },
           );
-        }
+   }
+        // The code only supports PassArgumentsScreen.routeName right now.
+       // Other values need to be implemented if we add them. The assertion
+       // here will help remind us of that higher up in the call stack, since
+        // this assertion would otherwise fire somewhere in the framework.
         assert(false, 'Need to implement ${settings.name}');
         return null;
-      },
-      routes: {
-        ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
-      },
+       },
+       title: 'Navigation with Arguments',
+      home: HomeScreen(),
+       routes: {
+         ExtractArgumentsScreen.routeName: (context) =>
+             ExtractArgumentsScreen(),
+     }
     );
   }
 }
@@ -324,9 +339,8 @@ class ScreenArguments {
 
 ```dart
 import 'package:flutter/material.dart';
+
 import 'extract_arguments_screen.dart';
-import 'pass_arguments_screen.dart';
-import 'screen_arguments.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -339,59 +353,54 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              margin: const EdgeInsets.only(bottom: 10.0),
-              child: _generateNavigateButton(
-                context,
-                ExtractArgumentsScreen.routeName,
-                'Go extracts screen',
-                'Extract Screen',
-                'This message is extracted in the build method.',
-                Colors.green,
-              ),
+            // A button that navigates to a named route that. The named route
+            // extracts the arguments by itself.
+            ElevatedButton(
+              child: Text("Navigate to screen that extracts arguments"),
+              onPressed: () {
+                // When the user taps the button, navigate to a named route
+                // and provide the arguments as an optional parameter.
+                Navigator.pushNamed(
+                  context,
+                  ExtractArgumentsScreen.routeName,
+                  arguments: ScreenArguments(
+                    'Extract Arguments Screen',
+                    'This message is extracted in the build method.',
+                  ),
+                );
+              },
             ),
-            _generateNavigateButton(
-              context,
-              PassArgumentsScreen.routeName,
-              'Go pass screen',
-              'Pass Screen',
-              'This message is extracted in the onGenerateRoute function.',
-              Colors.red,
+            // A button that navigates to a named route. For this route, extract
+            // the arguments in the onGenerateRoute function and pass them
+            // to the screen.
+            ElevatedButton(
+              child: Text("Navigate to a named that accepts arguments"),
+              onPressed: () {
+                // When the user taps the button, navigate to a named route
+                // and provide the arguments as an optional parameter.
+                Navigator.pushNamed(
+                  context,
+                  PassArgumentsScreen.routeName,
+                  arguments: ScreenArguments(
+                    'Accept Arguments Screen',
+                    'This message is extracted in the onGenerateRoute function.',
+                  ),
+                );
+              },
             ),
           ],
         ),
       ),
     );
   }
-
-  ElevatedButton _generateNavigateButton(BuildContext context, String route,
-      String btnName, String appBarName, String message, Color color) {
-    return ElevatedButton(
-      child: Text(btnName),
-      onPressed: () {
-        Navigator.pushNamed(
-          context,
-          route,
-          arguments: ScreenArguments(
-            appBarName,
-            message,
-          ),
-        );
-      },
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(color),
-      ),
-    );
-  }
 }
+
 ```
 
 ###### pass_arguments_screen.dart
 
 ```dart
 // A Widget that accepts the necessary arguments via the constructor.
-import 'package:flutter/material.dart';
-
 class PassArgumentsScreen extends StatelessWidget {
   static const routeName = '/passArguments';
 
@@ -421,6 +430,7 @@ class PassArgumentsScreen extends StatelessWidget {
     );
   }
 }
+
 ```
 
 ###### extract_arguments_screen.dart
@@ -450,10 +460,10 @@ class ExtractArgumentsScreen extends StatelessWidget {
     );
   }
 }
+
 ```
 
 ###### Result
-
 
 
 ## 5. Return data from a screen
@@ -472,9 +482,8 @@ class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Navigation',
-
-      /// 5. Return data from a screen (require restart app to run)
+      //Ex5
+      title: 'Returning Data',
       home: HomeScreenEx5(),
     );
   }
@@ -499,6 +508,7 @@ class HomeScreenEx5 extends StatelessWidget {
     );
   }
 }
+
 
 ```
 
@@ -537,6 +547,7 @@ class SelectionButton extends StatelessWidget {
       ..showSnackBar(SnackBar(content: Text("$result")));
   }
 }
+
 
 ```
 
@@ -582,16 +593,14 @@ class SelectionScreen extends StatelessWidget {
     );
   }
 }
+
 ```
 
 ###### Result
 
-![](/screenshots/exercise5/Screenshot_9.png)![](/screenshots/exercise5/Screenshot_10.png)
 
 
 ## 6. Send data to a new screen
-
-Code:[Exercise 6](https://github.com/KaseaKyra/flutter_lab_4_1/tree/main/lib/ui/view/exercise6)
 
 The direct link of this exercise: [Return data from a screen](https://flutter.dev/docs/cookbook/navigation/returning-data)
 
@@ -606,9 +615,7 @@ class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Navigation',
-
-      /// 6. Send data to a new screen
+      title: 'Passing Data',
       home: TodosScreen(
         todos: List.generate(
           20,
@@ -623,7 +630,7 @@ class HeroApp extends StatelessWidget {
 }
 ```
 
-###### to_do_model.dart
+###### todo.dart
 
 ```dart
 class Todo {
@@ -634,7 +641,7 @@ class Todo {
 }
 ```
 
-###### to_dos_view.dart
+###### todos_screen.dart
 
 ```dart
 import 'package:flutter/material.dart';
@@ -675,6 +682,7 @@ class TodosScreen extends StatelessWidget {
     );
   }
 }
+
 
 ```
 
