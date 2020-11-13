@@ -21,9 +21,8 @@ class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Navigation',
-
-      /// 1. Animate a widget across screens
+      //Ex1
+      title: 'Transition Demo',
       home: MainScreen(),
     );
   }
@@ -109,8 +108,9 @@ class HeroApp extends StatelessWidget {
     return MaterialApp(
       title: 'Navigation',
 
-      /// 2. Navigate to a new screen and back
-      home: FirstRoute(),
+      //Ex2
+       title: 'Navigation Basics',
+       home: FirstRoute(),
     );
   }
 }
