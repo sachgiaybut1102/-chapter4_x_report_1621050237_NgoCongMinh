@@ -17,9 +17,9 @@ The direct link of this exercise: [Animate a widget across screens](https://flut
 /// 1. Animate a widget across screens
 import 'main_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(HeroApp());
 
-class MyApp extends StatelessWidget {
+class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,29 +37,25 @@ class MyApp extends StatelessWidget {
 import 'package:flutter/material.dart';
 import 'detail_screen.dart';
 
+
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Animate a widget across screens'),
+        title: Text('Main Screen'),
       ),
       body: GestureDetector(
         child: Hero(
           tag: 'imageHero',
           child: Image.network(
-            'https://picsum.photos/250?image=10',
+            'https://picsum.photos/250?image=9',
           ),
         ),
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) {
-                return DetailScreen();
-              },
-            ),
-          );
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            return DetailScreen();
+          }));
         },
       ),
     );
@@ -68,8 +64,10 @@ class MainScreen extends StatelessWidget {
 
 ```
 
-###### detail_view.dart
+###### detail_screen.dart
 ```dart
+import 'package:flutter/material.dart';
+
 class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -79,7 +77,7 @@ class DetailScreen extends StatelessWidget {
           child: Hero(
             tag: 'imageHero',
             child: Image.network(
-              'https://picsum.photos/250?image=10',
+              'https://picsum.photos/250?image=9',
             ),
           ),
         ),
@@ -98,17 +96,18 @@ class DetailScreen extends StatelessWidget {
 
 ## 2. Navigate to a new screen and back
 
-Code: lib -> ui -> view -> exercise2. [Exercise 2](https://github.com/KaseaKyra/flutter_lab_4_1/tree/main/lib/ui/view/exercise2)
+Code: [Exercise 2](https://github.com/sachgiaybut1102/-chapter4_x_report_1621050237_NgoCongMinh/tree/main/lib)
 
 The direct link of this exercise: [Navigate to a new screen and back](https://flutter.dev/docs/cookbook/navigation/navigation-basics)
 
 ###### main.dart
 
 ```dart
+import 'package:flutter/material.dart';
 /// 2. Navigate to a new screen and back
-import 'ui/view/exercise2/first_route.dart';
+import 'first_route.dart';
 
-class MyApp extends StatelessWidget {
+class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -124,6 +123,8 @@ class MyApp extends StatelessWidget {
 ###### first_route.dart
 
 ```dart
+import 'package:flutter/material.dart';
+
 import 'second_route.dart';
 
 class FirstRoute extends StatelessWidget {
@@ -147,10 +148,13 @@ class FirstRoute extends StatelessWidget {
     );
   }
 }
+
 ```
 ###### second_route.dart
 
 ```dart
+import 'package:flutter/material.dart';
+
 class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -169,6 +173,7 @@ class SecondRoute extends StatelessWidget {
     );
   }
 }
+
 ```
 
 ###### Result
@@ -177,7 +182,7 @@ class SecondRoute extends StatelessWidget {
 
 ## 3. Navigate with named routes
 
-Code: lib -> ui -> view -> exercise3. [Exercise 3](https://github.com/KaseaKyra/flutter_lab_4_1/tree/main/lib/ui/view/exercise3)
+Code: [Exercise 3](https://github.com/sachgiaybut1102/-chapter4_x_report_1621050237_NgoCongMinh/tree/main/lib)
 
 The direct link of this exercise: [Navigate with named routes](https://flutter.dev/docs/cookbook/navigation/named-routes)
 
@@ -185,10 +190,11 @@ The direct link of this exercise: [Navigate with named routes](https://flutter.d
 
 ```dart
 /// 3. Navigate with named routes
-import 'ui/view/exercise3/first_screen.dart';
-import 'ui/view/exercise3/second_screen.dart';
+import 'package:flutter/material.dart';
+import 'first_screen.dart';
+import 'second_screen.dart';
 
-class MyApp extends StatelessWidget {
+class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -208,6 +214,8 @@ class MyApp extends StatelessWidget {
 ###### first_view.dart
 
 ```dart
+import 'package:flutter/material.dart';
+
 class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -219,11 +227,9 @@ class FirstScreen extends StatelessWidget {
         child: ElevatedButton(
           child: Text('Launch screen'),
           onPressed: () {
+            // Navigate to the second screen using a named route.
             Navigator.pushNamed(context, '/second');
           },
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-          ),
         ),
       ),
     );
@@ -233,6 +239,8 @@ class FirstScreen extends StatelessWidget {
 ###### second_view.dart
 
 ```dart
+import 'package:flutter/material.dart';
+
 class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -243,12 +251,11 @@ class SecondScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
+            // Navigate back to the first screen by popping the current route
+            // off the stack.
             Navigator.pop(context);
           },
           child: Text('Go back!'),
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
-          ),
         ),
       ),
     );
@@ -262,7 +269,7 @@ class SecondScreen extends StatelessWidget {
 
 ## 4. Pass arguments to a named route
 
-Code: lib -> ui -> view -> exercise4. [Exercise 4](https://github.com/KaseaKyra/flutter_lab_4_1/tree/main/lib/ui/view/exercise4)
+Code:[Exercise 4](https://github.com/sachgiaybut1102/-chapter4_x_report_1621050237_NgoCongMinh/tree/main/lib)
 
 The direct link of this exercise: [Pass arguments to a named route](https://flutter.dev/docs/cookbook/navigation/navigate-with-arguments)
 
@@ -270,12 +277,12 @@ The direct link of this exercise: [Pass arguments to a named route](https://flut
 
 ```dart
 /// 4 Pass arguments to a named route
-import 'ui/view/exercise4/extract_arguments_screen.dart';
-import 'ui/view/exercise4/home_screen.dart';
-import 'ui/view/exercise4/pass_arguments_screen.dart';
-import 'ui/view/exercise4/screen_arguments.dart';
+import 'extract_arguments_screen.dart';
+import 'home_screen_ex5.dart';
+import 'pass_arguments_screen.dart';
+import 'screen_arguments.dart';
 
-class MyApp extends StatelessWidget {
+class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -307,7 +314,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-###### screen_arguments_model.dart
+###### screen_arguments.dart
 
 ```dart
 class ScreenArguments {
@@ -316,6 +323,7 @@ class ScreenArguments {
 
   ScreenArguments(this.title, this.message);
 }
+
 ```
 
 ###### home_view.dart
@@ -456,7 +464,7 @@ The direct link of this exercise: [Return data from a screen](https://flutter.de
 /// 5. Return data from a screen
 import 'ui/view/exercise5/home_data_screen.dart';
 
-class MyApp extends StatelessWidget {
+class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -582,7 +590,7 @@ The direct link of this exercise: [Return data from a screen](https://flutter.de
 import 'ui/view/exercise6/to_do.dart';
 import 'ui/view/exercise6/to_dos_screen.dart';
 
-class MyApp extends StatelessWidget {
+class HeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
