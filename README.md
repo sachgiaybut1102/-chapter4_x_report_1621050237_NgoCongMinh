@@ -8,8 +8,6 @@ A new Flutter application.
 
 ## 1. Animate a widget across screens
 
-Code:[Exercise 1](https://flutter.dev/docs/cookbook/navigation/hero-animations)
-
 The direct link of this exercise: [Animate a widget across screens](https://flutter.dev/docs/cookbook/navigation/hero-animations)
 
 ###### main.dart
@@ -91,7 +89,6 @@ class DetailScreen extends StatelessWidget {
 
 ###### Result
 
-![](/screenshots/exercise1/Screenshot_4.png) ![](/screenshots/exercise1/Screenshot_5.png)
 
 ## 2. Navigate to a new screen and back
 
@@ -176,7 +173,6 @@ class SecondRoute extends StatelessWidget {
 
 ###### Result
 
-![](/screenshots/exercise2/Screenshot_6.png) ![](/screenshots/exercise2/Screenshot_7.png)
 
 ## 3. Navigate with named routes
 
@@ -263,7 +259,7 @@ class SecondScreen extends StatelessWidget {
 
 ###### Result
 
-![](/screenshots/exercise3/Screenshot_9.png) ![](/screenshots/exercise3/Screenshot_8.png)
+
 
 ## 4. Pass arguments to a named route
 
@@ -458,7 +454,7 @@ class ExtractArgumentsScreen extends StatelessWidget {
 
 ###### Result
 
-![](/screenshots/exercise4/Screenshot_8.png)![](/screenshots/exercise4/Screenshot_9.png) ![](/screenshots/exercise4/Screenshot_10.png)
+
 
 ## 5. Return data from a screen
 
@@ -714,5 +710,3 @@ class DetailScreen extends StatelessWidget {
 ```
 
 ###### Result
-
-![](/screenshots/exercise6/Screenshot_9.png)![](/screenshots/exercise6/Screenshot_11.png)
