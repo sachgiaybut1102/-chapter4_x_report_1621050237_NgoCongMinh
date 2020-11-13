@@ -15,7 +15,7 @@ The direct link of this exercise: [Animate a widget across screens](https://flut
 ###### main.dart
 ```dart
 /// 1. Animate a widget across screens
-import 'ui/view/exercise1/main_screen.dart';
+import 'main_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
 
 ###### main_view.dart
 ```dart
+import 'package:flutter/material.dart';
 import 'detail_screen.dart';
 
 class MainScreen extends StatelessWidget {
