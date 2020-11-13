@@ -8,7 +8,7 @@ A new Flutter application.
 
 ## 1. Animate a widget across screens
 
-Code: lib -> ui -> view -> exercise1. [Exercise 1](https://flutter.dev/docs/cookbook/navigation/hero-animations)
+Code:[Exercise 1](https://flutter.dev/docs/cookbook/navigation/hero-animations)
 
 The direct link of this exercise: [Animate a widget across screens](https://flutter.dev/docs/cookbook/navigation/hero-animations)
 
@@ -32,11 +32,11 @@ class HeroApp extends StatelessWidget {
 }
 ```
 
-###### main_view.dart
+###### main_screen.dart
 ```dart
 import 'package:flutter/material.dart';
-import 'detail_screen.dart';
 
+import 'detail_screen.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -61,7 +61,6 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
-
 ```
 
 ###### detail_screen.dart
@@ -173,7 +172,6 @@ class SecondRoute extends StatelessWidget {
     );
   }
 }
-
 ```
 
 ###### Result
@@ -211,7 +209,7 @@ class HeroApp extends StatelessWidget {
 }
 ```
 
-###### first_view.dart
+###### first_screen.dart
 
 ```dart
 import 'package:flutter/material.dart';
@@ -236,7 +234,7 @@ class FirstScreen extends StatelessWidget {
   }
 }
 ```
-###### second_view.dart
+###### second_screen.dart
 
 ```dart
 import 'package:flutter/material.dart';
@@ -326,7 +324,7 @@ class ScreenArguments {
 
 ```
 
-###### home_view.dart
+###### home_screen.dart
 
 ```dart
 import 'package:flutter/material.dart';
@@ -392,15 +390,23 @@ class HomeScreen extends StatelessWidget {
 }
 ```
 
-###### pass_arguments_view.dart
+###### pass_arguments_screen.dart
 
 ```dart
+// A Widget that accepts the necessary arguments via the constructor.
+import 'package:flutter/material.dart';
+
 class PassArgumentsScreen extends StatelessWidget {
   static const routeName = '/passArguments';
 
   final String title;
   final String message;
 
+  // This Widget accepts the arguments as constructor parameters. It does not
+  // extract the arguments from the ModalRoute.
+  //
+  // The arguments are extracted by the onGenerateRoute function provided to the
+  // MaterialApp widget.
   const PassArgumentsScreen({
     Key key,
     @required this.title,
@@ -421,12 +427,14 @@ class PassArgumentsScreen extends StatelessWidget {
 }
 ```
 
-###### extract_arguments_view.dart
+###### extract_arguments_screen.dart
 
 ```dart
+// A Widget that extracts the necessary arguments from the ModalRoute.
+import 'package:flutter/material.dart';
+
 import 'screen_arguments.dart';
 
-// A Widget that extracts the necessary arguments from the ModalRoute.
 class ExtractArgumentsScreen extends StatelessWidget {
   static const routeName = '/extractArguments';
 
@@ -454,7 +462,7 @@ class ExtractArgumentsScreen extends StatelessWidget {
 
 ## 5. Return data from a screen
 
-Code: lib -> ui -> view -> exercise5. [Exercise 5](https://github.com/KaseaKyra/flutter_lab_4_1/tree/main/lib/ui/view/exercise5)
+Code:[Exercise 5](https://github.com/sachgiaybut1102/-chapter4_x_report_1621050237_NgoCongMinh/tree/main/lib)
 
 The direct link of this exercise: [Return data from a screen](https://flutter.dev/docs/cookbook/navigation/returning-data)
 
@@ -462,7 +470,7 @@ The direct link of this exercise: [Return data from a screen](https://flutter.de
 
 ```dart
 /// 5. Return data from a screen
-import 'ui/view/exercise5/home_data_screen.dart';
+import 'home_screen_ex5.dart';
 
 class HeroApp extends StatelessWidget {
   @override
@@ -471,35 +479,38 @@ class HeroApp extends StatelessWidget {
       title: 'Navigation',
 
       /// 5. Return data from a screen (require restart app to run)
-      home: HomeDataScreen(),
+      home: HomeScreenEx5(),
     );
   }
 }
 ```
 
-###### home_data_view.dart
+###### home_screen_ex5.dart
 
 ```dart
+import 'package:flutter/material.dart';
+
 import 'selection_button.dart';
 
-class HomeDataScreen extends StatelessWidget {
+class HomeScreenEx5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Returning Data Demo'),
       ),
-      body: Center(
-        child: SelectionButton(),
-      ),
+      body: Center(child: SelectionButton()),
     );
   }
 }
+
 ```
 
-###### select_button_view.dart
+###### selection_button.dart
 
 ```dart
+import 'package:flutter/material.dart';
+
 import 'selection_screen.dart';
 
 class SelectionButton extends StatelessWidget {
@@ -530,11 +541,14 @@ class SelectionButton extends StatelessWidget {
       ..showSnackBar(SnackBar(content: Text("$result")));
   }
 }
+
 ```
 
-###### selection_view.dart
+###### selection_screen.dart
 
 ```dart
+import 'package:flutter/material.dart';
+
 class SelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -547,18 +561,20 @@ class SelectionScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
+                  // Close the screen and return "Yep!" as the result.
                   Navigator.pop(context, 'Yep!');
                 },
                 child: Text('Yep!'),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
+                  // Close the screen and return "Nope!" as the result.
                   Navigator.pop(context, 'Nope.');
                 },
                 child: Text('Nope.'),
@@ -579,7 +595,7 @@ class SelectionScreen extends StatelessWidget {
 
 ## 6. Send data to a new screen
 
-Code: lib -> ui -> view -> exercise6. [Exercise 6](https://github.com/KaseaKyra/flutter_lab_4_1/tree/main/lib/ui/view/exercise6)
+Code:[Exercise 6](https://github.com/KaseaKyra/flutter_lab_4_1/tree/main/lib/ui/view/exercise6)
 
 The direct link of this exercise: [Return data from a screen](https://flutter.dev/docs/cookbook/navigation/returning-data)
 
@@ -587,8 +603,8 @@ The direct link of this exercise: [Return data from a screen](https://flutter.de
 
 ```dart
 /// 6. Send data to a new screen
-import 'ui/view/exercise6/to_do.dart';
-import 'ui/view/exercise6/to_dos_screen.dart';
+import 'todo.dart';
+import 'todos_screen.dart';
 
 class HeroApp extends StatelessWidget {
   @override
@@ -625,8 +641,10 @@ class Todo {
 ###### to_dos_view.dart
 
 ```dart
-import 'detail_screen.dart';
-import 'to_do.dart';
+import 'package:flutter/material.dart';
+
+import 'detail_screen_ex6.dart';
+import 'todo.dart';
 
 class TodosScreen extends StatelessWidget {
   final List<Todo> todos;
@@ -643,16 +661,15 @@ class TodosScreen extends StatelessWidget {
         itemCount: todos.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(
-              todos[index].title,
-            ),
+            title: Text(todos[index].title),
+            // When a user taps the ListTile, navigate to the DetailScreen.
+            // Notice that you're not only creating a DetailScreen, you're
+            // also passing the current todo through to it.
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailScreen(
-                    todo: todos[index],
-                  ),
+                  builder: (context) => DetailScreen(todo: todos[index]),
                 ),
               );
             },
@@ -662,20 +679,26 @@ class TodosScreen extends StatelessWidget {
     );
   }
 }
+
 ```
 
-###### detail_view.dart
+###### detail_screen_ex6.dart
 
 ```dart
-import 'to_do_model.dart';
+import 'package:flutter/material.dart';
+
+import 'todo.dart';
 
 class DetailScreen extends StatelessWidget {
+  // Declare a field that holds the Todo.
   final Todo todo;
 
+  // In the constructor, require a Todo.
   DetailScreen({Key key, @required this.todo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Use the Todo to create the UI.
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),
@@ -687,6 +710,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 }
+
 ```
 
 ###### Result
