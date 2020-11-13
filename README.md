@@ -4,7 +4,7 @@ A new Flutter application.
 
 ###### Structure of code
 
-![](/screenshots/structure/Screenshot_12.png)
+![](/img/structure.png)
 
 ## 1. Animate a widget across screens
 
@@ -86,8 +86,7 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-###### Result
-
+![](/img/Screenshot_13.png)![](/img/Screenshot_14.png)
 
 ## 2. Navigate to a new screen and back
 
@@ -173,6 +172,7 @@ class SecondRoute extends StatelessWidget {
 
 ###### Result
 
+![](/img/Screenshot_15.png)![](/img/Screenshot_16.png)
 
 ## 3. Navigate with named routes
 
@@ -262,8 +262,7 @@ class SecondScreen extends StatelessWidget {
 }
 ```
 
-###### Result
-
+![](/img/Screenshot_17.png)![](/img/Screenshot_18.png)
 
 
 ## 4. Pass arguments to a named route
@@ -463,8 +462,7 @@ class ExtractArgumentsScreen extends StatelessWidget {
 
 ```
 
-###### Result
-
+![](/img/Screenshot_19.png)![](/img/Screenshot_20.png)![](/img/Screenshot_21.png)
 
 ## 5. Return data from a screen
 
@@ -596,9 +594,7 @@ class SelectionScreen extends StatelessWidget {
 
 ```
 
-###### Result
-
-
+![](/img/Screenshot_22.png)![](/img/Screenshot_23.png)
 
 ## 6. Send data to a new screen
 
@@ -717,4 +713,4 @@ class DetailScreen extends StatelessWidget {
 
 ```
 
-###### Result
+![](/img/Screenshot_24.png)![](/img/Screenshot_25.png)
